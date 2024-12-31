@@ -1,6 +1,6 @@
 ﻿namespace KutuphaneOtomasyonuForm
 {
-    partial class Form1
+    partial class Giris
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Giris));
             this.personelGiristxt = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.sifreGiris = new System.Windows.Forms.TextBox();
@@ -44,7 +44,6 @@
             this.personelGiristxt.Name = "personelGiristxt";
             this.personelGiristxt.Size = new System.Drawing.Size(165, 20);
             this.personelGiristxt.TabIndex = 0;
-            this.personelGiristxt.TextChanged += new System.EventHandler(this.personelGiristxt_TextChanged);
             // 
             // label1
             // 
@@ -56,7 +55,6 @@
             this.label1.Size = new System.Drawing.Size(80, 30);
             this.label1.TabIndex = 1;
             this.label1.Text = "Personel Adı:";
-            
             // 
             // sifreGiris
             // 
@@ -65,7 +63,6 @@
             this.sifreGiris.Size = new System.Drawing.Size(165, 20);
             this.sifreGiris.TabIndex = 2;
             this.sifreGiris.UseSystemPasswordChar = true;
-            this.sifreGiris.TextChanged += new System.EventHandler(this.sifreGiris_TextChanged);
             // 
             // label2
             // 
@@ -75,7 +72,6 @@
             this.label2.Size = new System.Drawing.Size(31, 13);
             this.label2.TabIndex = 3;
             this.label2.Text = "Şifre:";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // GirisButton
             // 
@@ -98,9 +94,8 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 5;
             this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
-            // Form1
+            // Giris
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -113,10 +108,10 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.personelGiristxt);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "Form1";
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Name = "Giris";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Form1";
-           
+            this.Text = "Giris";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

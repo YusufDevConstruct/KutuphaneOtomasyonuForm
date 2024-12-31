@@ -1,0 +1,165 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="KutuphaneOtomasyonuModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'KutuphaneOtomasyonu.dbo.Kitaplar' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Kitaplar">
+          <Key>
+            <PropertyRef Name="k_id" />
+          </Key>
+          <Property Name="k_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="k_ad" Type="nchar" MaxLength="30" />
+          <Property Name="k_yazar" Type="nchar" MaxLength="30" />
+          <Property Name="k_kategori" Type="nchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="Kullanicilar">
+          <Key>
+            <PropertyRef Name="kullanici_id" />
+          </Key>
+          <Property Name="kullanici_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="kullanici_ad" Type="nvarchar" MaxLength="50" />
+          <Property Name="kullanici_soyad" Type="nvarchar" MaxLength="50" />
+          <Property Name="kullanici_tc" Type="nchar" MaxLength="11" />
+          <Property Name="kullanici_mail" Type="nvarchar" MaxLength="50" />
+          <Property Name="kullanici_tel" Type="nchar" MaxLength="11" />
+          <Property Name="kullanici_ceza" Type="float" />
+        </EntityType>
+        <EntityType Name="Personeller">
+          <Key>
+            <PropertyRef Name="personel_ıd" />
+          </Key>
+          <Property Name="personel_ıd" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="personel_ad" Type="nvarchar" MaxLength="40" />
+          <Property Name="personel_soyad" Type="nvarchar" MaxLength="25" />
+          <Property Name="personel_tc" Type="char" MaxLength="11" />
+          <Property Name="personel_tel" Type="varchar" MaxLength="15" />
+          <Property Name="personel_mail" Type="nvarchar" MaxLength="50" />
+          <Property Name="personel_kullaniciAd" Type="nvarchar" MaxLength="50" />
+          <Property Name="personel_sifre" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityContainer Name="KutuphaneOtomasyonuModelStoreContainer">
+          <EntitySet Name="Kullanicilar" EntityType="Self.Kullanicilar" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Personeller" EntityType="Self.Personeller" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Kitaplar" EntityType="Self.Kitaplar" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Kitaplar].[k_id] AS [k_id], 
+    [Kitaplar].[k_ad] AS [k_ad], 
+    [Kitaplar].[k_yazar] AS [k_yazar], 
+    [Kitaplar].[k_kategori] AS [k_kategori]
+    FROM [dbo].[Kitaplar] AS [Kitaplar]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="KutuphaneOtomasyonuModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Personeller">
+          <Key>
+            <PropertyRef Name="personel_ıd" />
+          </Key>
+          <Property Name="personel_ıd" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="personel_ad" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="personel_soyad" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="personel_tc" Type="String" MaxLength="11" FixedLength="true" Unicode="false" />
+          <Property Name="personel_tel" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="personel_mail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="personel_kullaniciAd" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="personel_sifre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityContainer Name="KutuphaneOtomasyonuEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Personeller" EntityType="Self.Personeller" />
+          <EntitySet Name="Kullanicilar" EntityType="KutuphaneOtomasyonuModel.Kullanicilar" />
+          <EntitySet Name="Kitaplar" EntityType="KutuphaneOtomasyonuModel.Kitaplar" />
+        </EntityContainer>
+        <EntityType Name="Kullanicilar">
+          <Key>
+            <PropertyRef Name="kullanici_id" />
+          </Key>
+          <Property Name="kullanici_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="kullanici_ad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="kullanici_soyad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="kullanici_tc" Type="String" MaxLength="11" FixedLength="true" Unicode="true" />
+          <Property Name="kullanici_mail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="kullanici_tel" Type="String" MaxLength="11" FixedLength="true" Unicode="true" />
+          <Property Name="kullanici_ceza" Type="Double" />
+        </EntityType>
+        <EntityType Name="Kitaplar">
+          <Key>
+            <PropertyRef Name="k_id" />
+          </Key>
+          <Property Name="k_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="k_ad" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+          <Property Name="k_yazar" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+          <Property Name="k_kategori" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="KutuphaneOtomasyonuModelStoreContainer" CdmEntityContainer="KutuphaneOtomasyonuEntities1">
+          <EntitySetMapping Name="Personeller">
+            <EntityTypeMapping TypeName="KutuphaneOtomasyonuModel.Personeller">
+              <MappingFragment StoreEntitySet="Personeller">
+                <ScalarProperty Name="personel_ıd" ColumnName="personel_ıd" />
+                <ScalarProperty Name="personel_ad" ColumnName="personel_ad" />
+                <ScalarProperty Name="personel_soyad" ColumnName="personel_soyad" />
+                <ScalarProperty Name="personel_tc" ColumnName="personel_tc" />
+                <ScalarProperty Name="personel_tel" ColumnName="personel_tel" />
+                <ScalarProperty Name="personel_mail" ColumnName="personel_mail" />
+                <ScalarProperty Name="personel_kullaniciAd" ColumnName="personel_kullaniciAd" />
+                <ScalarProperty Name="personel_sifre" ColumnName="personel_sifre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Kullanicilar">
+            <EntityTypeMapping TypeName="KutuphaneOtomasyonuModel.Kullanicilar">
+              <MappingFragment StoreEntitySet="Kullanicilar">
+                <ScalarProperty Name="kullanici_ceza" ColumnName="kullanici_ceza" />
+                <ScalarProperty Name="kullanici_tel" ColumnName="kullanici_tel" />
+                <ScalarProperty Name="kullanici_mail" ColumnName="kullanici_mail" />
+                <ScalarProperty Name="kullanici_tc" ColumnName="kullanici_tc" />
+                <ScalarProperty Name="kullanici_soyad" ColumnName="kullanici_soyad" />
+                <ScalarProperty Name="kullanici_ad" ColumnName="kullanici_ad" />
+                <ScalarProperty Name="kullanici_id" ColumnName="kullanici_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Kitaplar">
+            <EntityTypeMapping TypeName="KutuphaneOtomasyonuModel.Kitaplar">
+              <MappingFragment StoreEntitySet="Kitaplar">
+                <ScalarProperty Name="k_kategori" ColumnName="k_kategori" />
+                <ScalarProperty Name="k_yazar" ColumnName="k_yazar" />
+                <ScalarProperty Name="k_ad" ColumnName="k_ad" />
+                <ScalarProperty Name="k_id" ColumnName="k_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

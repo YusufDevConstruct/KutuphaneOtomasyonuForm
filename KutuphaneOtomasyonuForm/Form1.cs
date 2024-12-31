@@ -7,26 +7,24 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SqlClient;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+
 
 namespace KutuphaneOtomasyonuForm
 {
-    public partial class Form1 : Form
+    public partial class Giris : Form
+
+
     {
-        public Form1()
+
+        SqlConnection baglanti = new SqlConnection("Data Source=Yusuf\\SQLEXPRESS;Initial Catalog=KutuphaneOtomasyonu;Integrated Security=True;TrustServerCertificate=True;");
+        SqlCommand komut = new SqlCommand();
+        SqlDataReader dr;
+        public Giris()
         {
             InitializeComponent();
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-   
-
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void GirisButton_Click(object sender, EventArgs e)
@@ -34,26 +32,36 @@ namespace KutuphaneOtomasyonuForm
             string personelAdi = personelGiristxt.Text;
             string sifre = sifreGiris.Text;
 
-            if (personelAdi == "admin" && sifre == "1234")
+            try
             {
-                MessageBox.Show("Giriş Başarılı");
-               
+                baglanti.Open();
+
+                string query = "SELECT * FROM Personeller WHERE personel_kullaniciAd='" + personelAdi + "' AND personel_sifre='" + sifre + "'";
+                komut = new SqlCommand(query, baglanti);
+
+                dr = komut.ExecuteReader();
+
+                if (dr.Read())
+                {
+                    MessageBox.Show("Giriş Başarılı");
+                    IslemPaneli panel = new IslemPaneli();
+                    panel.Show();
+                    this.Hide();
+                }
+                else
+                {
+                    MessageBox.Show("Giriş Başarısız");
+                }
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("Giriş Başarısız");
+                MessageBox.Show("Hata form 1: " + ex.Message);
+            }
+            finally
+            {
+                baglanti.Close();
             }
         }
-        private void personelGiristxt_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void sifreGiris_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-       
     }
 }
+//Data Source=Yusuf\SQLEXPRESS;Initial Catalog=KutuphaneOtomasyonu;Integrated Security=True;Trust Server Certificate=True;Context Connection=False
