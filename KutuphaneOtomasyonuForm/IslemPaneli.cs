@@ -150,7 +150,7 @@ namespace KutuphaneOtomasyonuForm
                     new System.Data.SqlClient.SqlParameter("@tc", tc),
                     new System.Data.SqlClient.SqlParameter("@ceza", ceza));
 
-                MessageBox.Show("Kullanıcı başarıyla eklendi!", "Başarılı", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Kullanıcı başarıyla eklendi!", "Başarılı", MessageBoxButtons.OK,  MessageBoxIcon.Information);
 
                 nameTxt.Text = "";
                 sNameTxt.Text = "";
