@@ -62,6 +62,21 @@ namespace KutuphaneOtomasyonuForm
                 baglanti.Close();
             }
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            DialogResult dialogResult = MessageBox.Show("Çıkmak istediğinize emin misiniz?", "Çıkış", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                Application.Exit();
+            }
+            else if (dialogResult == DialogResult.No)
+            {
+                
+            }
+        }
+
+     
     }
 }
 //Data Source=Yusuf\SQLEXPRESS;Initial Catalog=KutuphaneOtomasyonu;Integrated Security=True;Trust Server Certificate=True;Context Connection=False
